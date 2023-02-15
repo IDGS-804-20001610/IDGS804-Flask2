@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+
+    <title>FORMULARIO</title>
+        <style>
+            body{
+                padding-top: 60px;
+            }
+            .tr-head{background: blue;}
+            .column {
+                float: left;
+                width: 50%;
+            }
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+    </style>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div clas="row">
+        
+        <form class="form-horizontal" name="form1" action="/results" method="post">
+            <div class="column">
+                <h1>DATOS PERSONALES</h1>
+                <div class="control-group">
+                    <div class="mb-3 row">
+                        <label for="txtName" class="col-sm-2 col-form-label">Name: </label>
+                        <div class="col-sm-10">
+                            <input type="text" name="txtName" class="input-xlarge"
+                                   placeholder="Brenda Carolina" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="mb-3 row">
+                        <label for="txtLastName1" class="col-sm-2 col-form-label">Last Name: </label>
+                        <div class="col-sm-10">
+                            <input type="text" name="txtLastName1" class="input-xlarge"
+                                   placeholder="Ruiz" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="mb-3 row">
+                        <label for="txtLastName2" class="col-sm-2 col-form-label">Last Name: </label>
+                        <div class="col-sm-10">
+                            <input type="text" name="txtLastName2" class="input-xlarge"
+                                   placeholder="Hernández" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <h3>FECHA DE NACIMIENTO</h3>
+
+                <div class="control-group">
+                    <div class="mb-3 row">
+                        <label for="txtDay" class="col-sm-2 col-form-label">DAY: </label>
+                        <div class="col-sm-10">
+                            <input type="number" name="txtDay" class="input-xlarge"
+                                   placeholder="1" min="1" max="31" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="mb-3 row">
+                        <label for="txtMonth" class="col-sm-2 col-form-label">MONTH: </label>
+                        <div class="col-sm-10">
+                            <input type="number" name="txtMonth" class="input-xlarge"
+                                   placeholder="1" min="1" max="12" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="mb-3 row">
+                        <label for="txtYear" class="col-sm-2 col-form-label">YEAR: </label>
+                        <div class="col-sm-10">
+                            <input type="number" name="txtYear" class="input-xlarge"
+                                   placeholder="1" min="1" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <fieldset>
+                    <legend>SEX</legend>
+                    <label>
+                        <input type="radio" name="sex" value="1"> MALE
+                    </label>
+                    <label>
+                        <input type="radio" name="sex" value="2"> FEMALE
+                    </label>
+                </fieldset>
+            </div>
+
+                <div class="column">
+                    <h1>EXAMEN</h1>
+                        <fieldset>
+                            <legend>1. ¿Cuál es la suma de 2 + 2?</legend>
+                            <label>
+                                <input type="radio" name="question1" value="1"> a) 8
+                            </label>
+                            <label>
+                                <input type="radio" name="question1" value="2"> b) 6
+                            </label>
+                            <label>
+                                <input type="radio" name="question1" value="3"> c) 2
+                            </label>
+                            <label>
+                                <input type="radio" name="question1" value="4"> d) 4
+                            </label>
+                        </fieldset>
+        
+                        <br>
+        
+                        <fieldset>
+                            <legend>2. ¿Cuál es la suma de 2 + 6?</legend>
+                            <label>
+                                <input type="radio" name="question2" value="1"> a) 8
+                            </label>
+                            <label>
+                                <input type="radio" name="question2" value="2"> b) 6
+                            </label>
+                            <label>
+                                <input type="radio" name="question2" value="3"> c) 2
+                            </label>
+                            <label>
+                                <input type="radio" name="question2" value="4"> d) 4
+                            </label>
+                        </fieldset>
+        
+                        <br>
+        
+                        <fieldset>
+                            <legend>3. ¿Cuál es la suma de 1 + 1?</legend>
+                            <label>
+                                <input type="radio" name="question3" value="1"> a) 8
+                            </label>
+                            <label>
+                                <input type="radio" name="question3" value="2"> b) 6
+                            </label>
+                            <label>
+                                <input type="radio" name="question3" value="3"> c) 2
+                            </label>
+                            <label>
+                                <input type="radio" name="question3" value="4"> d) 4
+                            </label>
+                        </fieldset>
+        
+                        <br>
+        
+                        <fieldset>
+                            <legend>4. ¿Cuál es la suma de 10 - 2?</legend>
+                            <label>
+                                <input type="radio" name="question4" value="1"> a) 8
+                            </label>
+                            <label>
+                                <input type="radio" name="question4" value="2"> b) 6
+                            </label>
+                            <label>
+                                <input type="radio" name="question4" value="3"> c) 2
+                            </label>
+                            <label>
+                                <input type="radio" name="question4" value="4"> d) 4
+                            </label>
+                        </fieldset>
+        
+                        <br>
+        
+                        <fieldset>
+                            <legend>5. ¿Cuál es la suma de 2 + 4?</legend>
+                            <label>
+                                <input type="radio" name="question5" value="1"> a) 8
+                            </label>
+                            <label>
+                                <input type="radio" name="question5" value="2"> b) 6
+                            </label>
+                            <label>
+                                <input type="radio" name="question5" value="3"> c) 2
+                            </label>
+                            <label>
+                                <input type="radio" name="question5" value="4"> d) 4
+                            </label>
+                        </fieldset>
+        
+                        <br>
+                        <div class="control-group">
+                            <div class="control">
+                                <button type="submit" class="btn btn-default btn-primary"> FINISH </button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </form>
+
+        <form class="form-horizontal" name="form2" action="/form" method="post">
+            <div class="control-group">
+                <div class="control">
+                    <button type="submit" class="btn btn-default btn-danger"> CLEAR </button>
+                </div>
+            </div>
+        </form>
+        </div>
+
+        
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

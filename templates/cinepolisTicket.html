@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+
+    <title>Document</title>
+        <style>
+            body{
+                padding-top: 60px;
+                background-image: url("../static/img/background.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+            h1, h2 {
+                color: black;
+                text-align: center;
+            }
+    </style>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div clas="row">
+        <div class="ticket" style="width:1160px;height:400px;border:2px solid white;background: white;">
+            <h1>TICKET:</h1><br>
+            <h2>The purchase of : {{tickets}} ticket(s)</h2><br>
+            <h2>Was made by: {{name}}</h2><br>
+            <h2>Total due: ${{total}}</h2><br>
+        </div>
+    </div>
+</div>
+</body>
+</html> 

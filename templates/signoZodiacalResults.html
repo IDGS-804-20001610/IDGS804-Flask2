@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+
+    <title>RESULTS</title>
+        <style>
+            body{
+                padding-top: 60px;
+            }
+    </style>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div clas="row">
+        <div class="result" style="width:1160px;height:400px;border:2px solid white;background: white;">
+            <h2>Hi {{name}} {{lastName1}} {{lastName2}}</h2><br>
+            <h2>You are {{age}} years old and your zodiac sign is:</h2><br>
+            <h2>{{zodiac}}</h2><br>
+            <img src={{image}} style="width:300px;height:200px;">
+            <h2>Result: {{results}}/5</h2><br>
+        </div>
+    </div>
+</div>
+</body>
+</html> 
