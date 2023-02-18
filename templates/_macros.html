@@ -9,3 +9,19 @@
 </div>
 
 {%endmacro%}
+
+<!-- Enviar varios componentes -->
+
+{%macro render_firld(field)%}
+    <div class="control-group">
+        <div class="controls">
+            {{field.label}}
+            
+            {{field(**kwargs)|safe}}
+        </div>
+    </div>
+{%endmacro%}
+
+{%macro render_fiel(name, type, classes)%}
+<input type = "{{type or 'text'}}" id="{{name}}" name="{{ name }}">
+{%endmacro%}
