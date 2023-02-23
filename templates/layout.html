@@ -12,6 +12,7 @@
         <style>
             body{
                 padding-top: 60px;
+                padding-left: 60px;
             }
             .tr-head{background: blue;}
     </style>
@@ -49,7 +50,21 @@
             </div>
         </div>
     </div>
-{% block content %}
-{% endblock %}
+
+    
+    <div class="container">
+        {%with messages = get_flashed_messages()%}
+        {%if messages%}
+            {%for message in messages%}
+                <div class="alert alert-success">
+                    {{message}}
+                </div>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+
+    {%block content%}
+    {%endblock%}
+    </div>
 </body>
 </html>
