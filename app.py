@@ -80,8 +80,36 @@ def trad():
             word = [word.split(' ')[1] for word in words if word.split(' ')[0] == pa]
         else:
             word = [word.split(' ')[0] for word in words if word.split(' ')[1] == pa]
+
+        if len(word) > 0:
+            word1 = word[0]
+            return ''' <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+
+    <title>Document</title>
+    <style>
+    </style>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div clas="row">
+        <h1>La traducción de la palabra "''' + pa + '''" es: '''+ word1 + '''</h1>
+    </div>
+</div>
+</body>
+</html>''' 
+        else:
+            word1 = "NO existe dentro de nuestro diccionario"
             
-    return render_template("traduccion.html", pa = pa, word = word)
+    return render_template("traduccion.html", pa = pa, word1 = word1)
     
 
 @app.route("/cookie", methods = ['POST', 'GET'])

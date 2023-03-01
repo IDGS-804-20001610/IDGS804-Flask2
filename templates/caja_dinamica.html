@@ -21,6 +21,8 @@
 <div class="container">
     <div clas="row">
         <form class="form-horizontal" name="form1" action="/numero" method="post">
+            {{csrf_token}}
+            <input type = "hidden" name = "csrf_token" value = "{{csrf_token()}}">
                 <h2>Número de Cajas Dinámicas</h2>
                 <div class="control-group">
                     <div class="mb-3 row">
@@ -42,6 +44,8 @@
     <div class="row">
         {%from "_macros.html" import render_fiel%}
         <form class="form-horizontal" name="form2" action="/cajas" method="post">
+            {{csrf_token}}
+            <input type = "hidden" name = "csrf_token" value = "{{csrf_token()}}">
             <h2>Cajas Dinámicas</h2>
             {% for numero in range(n)%}
             <div>

@@ -18,6 +18,8 @@
 <body>
 
 <div class="container">
+    {{csrf_token}}
+    <input type = "hidden" name = "csrf_token" value = "{{csrf_token()}}">
     <div clas="row">
             <h1>RESULTADOS:</h1><br>
             <h2>Número Máximo: {{maximo}}</h2><br>
