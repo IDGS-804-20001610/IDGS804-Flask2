@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{%block content%}
+
+<style>
+    .negro{
+        background-color: black;
+        color: white;
+    }
+    .cafe{
+        background-color: brown;
+        color: white;
+    }
+    .rojo{
+        background-color: red;
+        color: white;
+    }
+    .naranja{
+        background-color: orange;
+        color: black;
+    }
+    .amarillo{
+        background-color: yellow;
+        color: black;
+    }.verde{
+        background-color: green;
+        color: white;
+    }
+    .azul{
+        background-color: blue;
+        color: white;
+    }
+    .morado{
+        background-color: purple;
+        color: white;
+    }
+    .gris{
+        background-color: gray;
+        color: white;
+    }
+    .blanco{
+        background-color: white;
+        color: black;
+    }
+    .column1{
+        margin-left:220px;
+        margin-right:20px;
+        margin-top:10px;
+    }
+    .column2{
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:200px;
+        margin-top:10px;
+    }
+</style>
+
+<div class="row">
+    <h1>CALCULAR RESISTENCIA</h1>
+    <div class="column1">
+        <img src="https://www.logicbus.com.mx/blog/wp-content/uploads/2019/07/codigo-colores-resistencias-e1563802288271.jpg" style="width:600px;height:400px;">
+    </div>
+
+    <div class="column2"></div>
+        {%from "_macros.html" import render_firld%}
+        <form class ="form-horizontal" action="" method="post" novalidate>
+        
+            {{form.csrf_token}}
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+            <div class="control-group">
+                {{render_firld(form.banda1)}}
+                {{render_firld(form.banda2)}}
+                {{render_firld(form.banda3)}}
+            
+                {{render_firld(form.tolerancia)}}
+            </div>
+            <input type="submit" id="al" name="al" value="Calcular" class="btn btn-primary">
+        </form>
+    </div>
+
+        {% if datos %}
+        <table class="table">
+                <tr>
+                    <th>Banda 1</th>
+                    <th>Banda 2</th>
+                    <th>Banda 3</th>
+                    <th>Tolerancia</th>
+                    <th>Resultado</th>
+                    <th>Mínimo</th>
+                    <th>Máximo</th>
+                </tr>
+            {% if datos %}
+            {% from '_macros.html' import table %}
+                    {% for ban1, ban2, ban3, tolerancia, resultado, minimo, maximo in datos %}
+                        {{table(ban1, ban2, ban3, tolerancia, resultado, minimo, maximo)}}
+                    {% endfor %}
+            {% endif %}
+        </table>
+        {% endif %}
+    </div>
+
+{%endblock%}

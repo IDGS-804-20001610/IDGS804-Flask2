@@ -35,3 +35,16 @@
 {%macro render_fiel(name, type, classes)%}
 <input type = "{{type or 'text'}}" id="{{name}}" name="{{ name }}">
 {%endmacro%}
+
+{% macro table(ban1, ban2, ban3, tolerancia, valor, valorMin, valorMax) %}
+<tr>
+    <td class="{{ ban1 }}">{{ ban1 }}</td>
+    <td class="{{ ban2 }}">{{ ban2 }}</td>
+    <td class="{{ ban3 }}">{{ ban3 }}</td>
+    <td>{{ tolerancia }}</td>
+    <td>{{ valor }}</td>
+    <td>{{ valorMin }}</td>
+    <td>{{ valorMax }}</td>
+</tr>
+    
+{% endmacro %}

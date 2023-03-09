@@ -1,6 +1,6 @@
 
-from flask import Flask, render_template, request, flash, make_response
-import forms, caja_dinamica, traductor
+from flask import Flask, render_template, request, flash, make_response, redirect
+import forms, caja_dinamica, traductor, resistencia, math, json
 from flask_wtf.csrf import CSRFProtect
 
 app=Flask(__name__)
@@ -126,6 +126,114 @@ def cookie():
         flash(success_message)
     return response
 
+colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo',
+                'verde', 'azul', 'morado', 'gris', 'blanco']
+color = ['oro', 'plata']
+
+def calcular(bandas):
+    resultado = float(f"{colores.index(bandas['ban1'])}{colores.index(bandas['ban2'])}") * float(f"1{colores.index(bandas['ban3']) * '0'}")
+    minimo = resultado - (resultado * float(bandas['tolerancia']))
+    maximo = resultado + (resultado * float(bandas['tolerancia']))
+
+    return (
+        bandas['ban1'],
+        bandas['ban2'],
+        bandas['ban3'],
+        bandas['tolerancia'],
+        resultado,
+        minimo,
+        maximo
+    )
+    
+
+@app.route("/resistencia", methods = ['POST', 'GET'])
+def resiste():
+
+    reg_resis = resistencia.ResForm(request.form)
+
+    filename = 'resistencia.json'
+    
+    with open(filename, 'r') as f:
+        datos = json.load(f)
+
+    data = [calcular(row) for row in datos] if datos != "" else False
+
+    if request.method == 'POST' and reg_resis.validate():
+        
+        banda1 = request.form.get('banda1')
+        banda2 = request.form.get('banda2')
+        banda3 = request.form.get('banda3')
+        tolerancia = request.form.get('tolerancia')
+
+        jsonObj = {
+            'ban1': colores[int(banda1)],
+            'ban2': colores[int(banda2)],
+            'ban3': colores[len(banda3) - 1],
+            'tolerancia': tolerancia,
+        }
+
+        with open(filename, 'w') as f:
+            json.dump([jsonObj, * datos], f)
+
+        return redirect("/resistencia")
+    
+    return render_template("resistencia.html", form = reg_resis, datos = data)
+'''
+        valor = float(banda1 + banda2) * float(banda3)
+        valorMin = valor - (valor * float(tolerancia))
+        valorMax = valor + (valor * float(tolerancia))
+
+        filename = 'resistencia.json'
+        with open(filename, 'r') as f:
+            datos = json.load(f)
+
+        if isinstance(datos, list):
+            datos.append({ 
+            'valor:': str(valor),
+            'min': str(valorMin),
+            'max': str(valorMax), 
+            'ban1': colors[int(banda1)], 
+            'ban2': colors[int(banda2)], 
+            'ban3': colors[len(banda3)-1], 
+            })
+
+        else:
+            datos = [{ 
+            'valor:': str(valor),
+            'min': str(valorMin),
+            'max': str(valorMax), 
+            'ban1': colors[int(banda1)], 
+            'ban2': colors[int(banda2)], 
+            'ban3': colors[len(banda3)-1], 
+            }]
+            
+        with open(filename, 'w') as f:
+            json.dump(datos, f)
+
+        #f = open('resistencia.txt', 'a')
+        #f.write(f"{colors[int(banda1)]} {colors[int(banda2)]} {colors[len(banda3)-1]} {color[int(tolerancia)]}\n")
+        # f.write('BANDA 2: ' + colors[int(banda2)] + '\n')
+        #f.write('BANDA 3: ' + colors[len(banda3)-1] + '\n' + '\n')
+        # f.write('BANDA 3: ' + colors[len(banda3)-1] + '\n' + '\n')
+    
+        
+        datos = [{ 
+            'RESULTADO:': str(valor),
+            'MINIMO': str(valorMin),
+            'MAXIMO': str(valorMax), 
+            'ban1': colors[int(banda1)], 
+            'ban2': colors[int(banda2)], 
+            'ban3': colors[len(banda3)-1], 
+            }]
+    else:
+        with open('resistencia.txt', 'r') as file:
+            lines = file.read().splitlines()
+            [line.split(' ') for line in lines]
+
+        
+    return render_template("resistencia.html",form=reg_resis, datos = datos)
+
+'''
 if __name__ == "__main__":
     csrf.init_app(app)
     app.run(debug=True)
