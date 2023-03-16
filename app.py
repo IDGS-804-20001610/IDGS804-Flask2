@@ -151,6 +151,8 @@ def resiste():
 
     reg_resis = resistencia.ResForm(request.form)
 
+    datoss = list()
+
     filename = 'resistencia.json'
     
     with open(filename, 'r') as f:
@@ -164,6 +166,21 @@ def resiste():
         banda2 = request.form.get('banda2')
         banda3 = request.form.get('banda3')
         tolerancia = request.form.get('tolerancia')
+
+        ban1 = colores[int(banda1)]
+        ban2 = colores[int(banda2)]
+        ban3 = colores[len(banda3)-1]
+
+        datoss.append(ban1)
+        datoss.append(ban2)
+        datoss.append(ban3)
+        datoss.append(tolerancia)
+
+        f = open('resistencia.txt', 'a')
+        f.write(ban1.upper())
+        f.write(' ' + ban2.upper())
+        f.write(' ' + ban3.upper())
+        f.write(' ' + tolerancia.upper() + '\n')
 
         jsonObj = {
             'ban1': colores[int(banda1)],

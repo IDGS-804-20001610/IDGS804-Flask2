@@ -1,1 +1,1 @@
-[{"ban1": "cafe", "ban2": "cafe", "ban3": "rojo", "tolerancia": "0.05"}]
+[{"ban1": "morado", "ban2": "naranja", "ban3": "morado", "tolerancia": "0.1"}, {"ban1": "cafe", "ban2": "rojo", "ban3": "azul", "tolerancia": "0.05"}, {"ban1": "negro", "ban2": "amarillo", "ban3": "verde", "tolerancia": "0.1"}]
